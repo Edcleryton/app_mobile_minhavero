@@ -1,0 +1,11 @@
+appId: com.vero_mobile
+---
+# TESTE: CPF obrigatório
+- launchApp:
+    clearState: true
+- runFlow: C:\Users\edcle\OneDrive\Desktop\minhaVeroApp\tests\pages\login_page.yaml
+- tapOn: "Avançar"
+- assertVisible: "Campo obrigatório"
+- assertVisible: "Por favor, preencha o campo de CPF ou CNPJ."
+- tapOn: "OK"
+- assertVisible:  Entrar

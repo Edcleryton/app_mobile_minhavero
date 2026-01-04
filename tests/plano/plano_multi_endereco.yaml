@@ -1,0 +1,54 @@
+# tests/plano/plano_multi_endereco_flow.yaml
+appId: com.vero_mobile
+env:
+    CPF_TESTE: ${CPF_TESTE2}
+    SENHA_TESTE: ${SENHA_TESTE2}
+---
+- launchApp:
+      clearState: true
+
+- runFlow: ../flows/login_sucesso_flow.yaml
+
+- tapOn: "Plano"
+
+- runFlow:
+      file: ../pages/plano_page.yaml
+
+- runFlow:
+      file: ../pages/plano_page.yaml
+
+- runFlow:
+      file: ../pages/plano_page.yaml
+
+- runFlow:
+      file: ../pages/plano_page.yaml
+
+- runFlow:
+      file: ../pages/plano_page.yam
+---
+appId: com.vero_mobile
+env:
+    CPF_TESTE: ${CPF_TESTE}
+    SENHA_TESTE: ${SENHA_TESTE}
+---
+- launchApp:
+      clearState: true
+
+- runFlow: ../flows/login_sucesso_flow.yaml
+
+- tapOn: "Plano"
+
+- runFlow:
+      file: ../pages/plano_page.yaml
+
+- runFlow:
+      file: ../pages/plano_page.yaml
+
+- assertVisible: "Como faço para ter acessos ao Premiere?"
+- assertVisible: "Como faço para ter acessos ao Telecine?"
+- assertVisible: "Como faço para ter acessos ao Globoplay Premium?"
+
+- runFlow:
+      file: ../pages/plano_page.yaml
+- assertVisible:
+      text: ".*"

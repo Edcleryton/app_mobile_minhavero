@@ -1,0 +1,47 @@
+# Common Page
+
+appId: com.vero_mobile
+---
+
+- label: "abrir_app"
+  command:
+  - launchApp:
+      clearState: true
+
+- label: "abrir_app_preservar_estado"
+  command:
+  - launchApp:
+      clearState: false
+
+- label: "fechar_modal"
+  command:
+  - tapOn: "OK"
+
+- label: "clicar_voltar"
+  command:
+  - tapOn: "Voltar"
+
+- label: "esperar_carregamento"
+  command:
+  - wait:
+      seconds: 2
+
+- label: "scroll_down"
+  command:
+  - scroll:
+      coordinate: [ 360, 400 ]
+      scroll_parameters:
+        scroll_direction: down
+        scroll_amount: 3
+
+- label: "scroll_up"
+  command:
+  - scroll:
+      coordinate: [ 360, 400 ]
+      scroll_parameters:
+        scroll_direction: up
+        scroll_amount: 3
+
+- label: "validar_elemento_visivel"
+  command:
+  - assertVisible: ${ELEMENTO}

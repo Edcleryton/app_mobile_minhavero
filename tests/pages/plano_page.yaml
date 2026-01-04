@@ -1,0 +1,42 @@
+appId: com.vero_mobile
+---
+- runFlow:
+    when:
+      visible: Biometria
+    commands:
+      - extendedWaitUntil:
+          visible: Agora Não
+          timeout: 1000
+      - tapOn: Agora Não
+---
+- assertVisible: "Plano de internet selecionado é:"
+- assertVisible:
+    text: "\\d{4,5} - .*"
+- assertVisible: "Ativo"
+- assertVisible: "Vencimento"
+- assertVisible: "Valor do plano"
+- assertVisible:
+    text: "R\\$ .*"
+
+- assertVisible: Endereço de instalação
+- assertVisible:
+    text: "R .*"
+
+- tapOn: "Selecione outro plano"
+
+- assertVisible: "Selecione seu plano"
+- assertVisible: "Planos individuais:"
+- assertVisible: "Dúvidas?"
+- assertVisible: "Como acesso o meu contrato com a Vero?"
+- assertVisible: "Como faço para acessar a Minha Vero pelo site?"
+- assertVisible: "Como faço para ter acesso a Paramount+?"
+- tapOn: "Exibir tudo"
+- assertVisible: "Dúvidas - Produtos e serviços"
+- tapOn: "Como faço para ter acessos ao Premiere?"
+
+- tapOn: "Como faço para ter acessos ao Telecine?"
+
+- tapOn: "Como faço para ter acessos ao Globoplay Premium?"
+- tapOn:
+    text: "1264 - DIAMANTE 750 MB - RET EXCLUSIVO"
+- tapOn: "Voltar"

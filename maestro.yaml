@@ -1,0 +1,16 @@
+# Configuração global do Maestro com captura de evidências
+
+screenshotOnFailure: true
+videoOnFailure: true
+outputDir: "./test-results"
+debugLogging: true
+
+# Configurações de timeout
+appLaunchTimeout: 30000
+commandTimeout: 10000
+
+# Configurações de screenshot
+screenshot:
+  onFailure: true
+  onSuccess: false
+  quality: high

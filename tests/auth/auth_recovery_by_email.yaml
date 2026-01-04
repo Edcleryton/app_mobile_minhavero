@@ -1,0 +1,22 @@
+appId: com.vero_mobile
+env:
+    CPF_TESTE: ${CPF_TESTE}
+---
+- launchApp:
+      clearState: true
+
+- runFlow: ../pages/login_page.yaml
+
+- tapOn: "Insira o número do seu documento"
+- inputText: ${CPF_TESTE}
+
+- tapOn: "Avançar"
+
+- assertVisible: "Não tenho minha senha"
+- tapOn: "Não tenho minha senha"
+
+- runFlow: ../pages/recovery_page.yaml
+
+- tapOn: "Receber código por email"
+
+- tapOn: "Confirmar"

@@ -1,0 +1,27 @@
+# tests/flows/login_sucesso_flow.yaml
+appId: com.vero_mobile
+env:
+  CPF_TESTE: ${CPF_TESTE}
+  SENHA_TESTE: ${SENHA_TESTE}
+---
+- launchApp:
+    clearState: true
+- tapOn: "Insira o número do seu documento"
+- inputText: ${CPF_TESTE}
+- tapOn: "Avançar"
+- assertVisible: "Senha:"
+- tapOn: "Insira sua senha"
+- inputText: ${SENHA_TESTE}
+- tapOn: "Entrar"
+- assertVisible: "Olá,.*"
+---
+- runFlow:
+    when:
+      visible: Biometria
+    commands:
+      - extendedWaitUntil:
+          visible: Agora Não
+          timeout: 1000
+      - tapOn: Agora Não
+---
+
