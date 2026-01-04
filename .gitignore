@@ -2,3 +2,4 @@
 reports/
 *.log
 *.apk
+.env
