@@ -1,15 +1,17 @@
 # Plano de Teste — Minha Vero (ISO/IEC/IEEE 29119-3)
 
+## 1. Cabeçalho
+
 **Projeto:** Minha Vero (APK Android)  
-**Identificador do Documento:** MV-TP-ISO29119-3-001  
+**Identificador Único do Documento:** MV-TP-ISO29119-3-001  
 **Data:** 2026-01-07  
 **Responsável:** QA / Automação (Maestro)
 
-| Versão | Data       | Autor           | Mudança                           |
-|-------:|------------|-----------------|-----------------------------------|
-| 1.0.0  | 2026-01-07 | Edcleryton Silva| Criação inicial do plano de teste |
+| Versão | Data       | Autor            | Mudança                           |
+|-------:|------------|------------------|-----------------------------------|
+| 1.0.0  | 2026-01-07 | Edcleryton Silva | Criação inicial do plano de teste |
 
-## 1. Visão Geral
+## 2. Visão Geral
 
 **Objetivo do teste**  
 Validar os fluxos críticos de uso do aplicativo Minha Vero no Android, com foco em navegação, conteúdo essencial de telas e ações principais, reduzindo risco de regressões em produção.
@@ -18,21 +20,14 @@ Validar os fluxos críticos de uso do aplicativo Minha Vero no Android, com foco
 - APK Android do aplicativo Minha Vero (`app_versao/*.apk`)
 - Flows Maestro (`tests/**/*.yaml`)
 
-## 2. Escopo
+## 3. Escopo
 
 **In Scope**
-- Autenticação
-  - Login (sucesso, senha obrigatória, CPF obrigatório, usuário inválido, senha errada)
-  - Recuperação de senha (SMS e e-mail; cenários de sucesso e falha, quando aplicável)
-- Home
-  - Validação de elementos essenciais da tela inicial
-- Plano
-  - Seleção e validação de plano
-  - Cenário de múltiplos endereços
-- Financeiro
-  - Validação da tela Financeiro (cards, botões e FAQ)
-  - Acesso a “Pagar fatura” e validação da tela de Pagamentos
-  - Ações de pagamento (Pix, cartão, segunda via, copiar código de barras)
+- Login
+- Recuperação de senha (SMS/e-mail)
+- Home (validação de tela)
+- Plano (validação e múltiplos endereços)
+- Financeiro (validação de tela e fluxos de pagamento)
 
 **Out of Scope**
 - Validações de regras de negócio no backend (cálculo de faturas, juros, conciliação)
@@ -41,7 +36,7 @@ Validar os fluxos críticos de uso do aplicativo Minha Vero no Android, com foco
 - Segurança (pentest), criptografia e análise de vulnerabilidades
 - Integrações externas (gateways de pagamento, bancos) além da navegação/UI
 
-## 3. Estratégia de Teste
+## 4. Estratégia de Teste
 
 **Automação com Maestro**
 - Ferramenta principal: Maestro (CLI e Studio) para execução de testes UI.
@@ -71,7 +66,7 @@ maestro test tests/flows/suite_auth_flow.yaml
 maestro test tests/flows/suite_financeiro_flow.yaml
 ```
 
-## 4. Critérios de Transição
+## 5. Critérios de Transição
 
 **Critérios de Entrada**
 - APK disponível e instalável (build estável e assinado conforme ambiente de teste).
@@ -85,7 +80,7 @@ maestro test tests/flows/suite_financeiro_flow.yaml
 - Evidências de falhas (screenshot/vídeo/log) coletadas para cada caso reprovado.
 - Nenhum bloqueador aberto sem plano de correção acordado.
 
-## 5. Riscos e Contingências
+## 6. Riscos e Contingências
 
 | ID  | Risco | Probabilidade | Impacto | Plano de Mitigação |
 |-----|-------|---------------|---------|--------------------|
@@ -96,9 +91,12 @@ maestro test tests/flows/suite_financeiro_flow.yaml
 | R-05 | Mudanças de layout exigem atualização constante dos Page Objects | Média | Médio | Centralizar validações em `tests/pages/*`, revisar pages por release e manter testes de cenário mínimos |
 | R-06 | Artefatos de evidência não aparecem na pasta esperada | Média | Médio | Padronizar `outputDir` do projeto e centralizar execução via script para consolidar artefatos |
 
-## 6. Modelo de Caso de Teste
+## 7. Modelo de Caso de Teste
+
+Tabela completa (casos executados): [casos-de-teste.md](casos-de-teste.md)
 
 | ID | Título | Prioridade | Passos | Resultados Esperados |
 |----|--------|------------|--------|----------------------|
 | TC-AUTH-001 | Login com credenciais válidas | Alta | 1) Abrir app 2) Informar CPF 3) Informar senha 4) Entrar | Usuário autenticado e Home exibida com elementos principais |
-
+| TC-AUTH-002 | Login com senha errada | Alta | 1) Abrir app 2) Informar CPF 3) Informar senha inválida 4) Entrar | Mensagem de autenticação falhou exibida |
+| TC-FIN-001 | Validar tela Financeiro | Alta | 1) Login 2) Abrir Financeiro 3) Validar elementos | Cards e FAQ visíveis |
