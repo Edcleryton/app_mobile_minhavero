@@ -1,18 +1,9 @@
 # pages/home_page.yaml
-appId: com.vero.app
----
-- runFlow:
-    when:
-      visible: Biometria
-    commands:
-      - extendedWaitUntil:
-          visible: Agora Não
-          timeout: 1000
-      - tapOn: Agora Não
+appId: com.vero_mobile
 ---
 - assertVisible:
     point: 36%,8%
-- assertVisible: "Olá,.*"
+- assertVisible: 'Olá,.*'
 - assertVisible: Acesso rápido
 - assertVisible: Alterar meus dados
 - assertVisible: Ajuda com a conexão

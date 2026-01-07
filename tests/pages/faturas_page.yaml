@@ -1,7 +1,0 @@
-appId: com.vero_mobile
----
-# Action: Valida que a tela de faturas está visível
-- name: validate_faturas_page_visible
-  commands:
-    - assertVisible: "Minhas Faturas" # Supondo que este é o título da página
-    - assertVisible: "Fatura atual"   # Supondo um elemento comum nesta tela

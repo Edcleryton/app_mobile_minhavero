@@ -6,10 +6,10 @@ appId: com.vero_mobile
 
 # Verifica que está na página de login
 - runFlow: ../pages/login_page.yaml
-- tapOn: "Insira o número do seu documento"
-- inputText: "99999999999"
-- tapOn: "Avançar"
+- tapOn: 'Insira o número do seu documento'
+- inputText: '99999999999'
+- tapOn: 'Avançar'
 - assertVisible: CPF ou CNPJ inválidos
-- assertVisible: "Revise os dados inseridos e tente novamente."
-- tapOn: "OK"
+- assertVisible: 'Revise os dados inseridos e tente novamente.'
+- tapOn: 'OK'
 - runFlow: ../pages/login_page.yaml

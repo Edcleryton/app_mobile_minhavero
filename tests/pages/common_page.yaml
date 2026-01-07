@@ -3,30 +3,30 @@
 appId: com.vero_mobile
 ---
 
-- label: "abrir_app"
+- label: 'abrir_app'
   command:
   - launchApp:
       clearState: true
 
-- label: "abrir_app_preservar_estado"
+- label: 'abrir_app_preservar_estado'
   command:
   - launchApp:
       clearState: false
 
-- label: "fechar_modal"
+- label: 'fechar_modal'
   command:
-  - tapOn: "OK"
+  - tapOn: 'OK'
 
-- label: "clicar_voltar"
+- label: 'clicar_voltar'
   command:
-  - tapOn: "Voltar"
+  - tapOn: 'Voltar'
 
-- label: "esperar_carregamento"
+- label: 'esperar_carregamento'
   command:
   - wait:
       seconds: 2
 
-- label: "scroll_down"
+- label: 'scroll_down'
   command:
   - scroll:
       coordinate: [ 360, 400 ]
@@ -34,7 +34,7 @@ appId: com.vero_mobile
         scroll_direction: down
         scroll_amount: 3
 
-- label: "scroll_up"
+- label: 'scroll_up'
   command:
   - scroll:
       coordinate: [ 360, 400 ]
@@ -42,6 +42,6 @@ appId: com.vero_mobile
         scroll_direction: up
         scroll_amount: 3
 
-- label: "validar_elemento_visivel"
+- label: 'validar_elemento_visivel'
   command:
   - assertVisible: ${ELEMENTO}

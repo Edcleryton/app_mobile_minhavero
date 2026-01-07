@@ -4,7 +4,7 @@ appId: com.vero_mobile
 - assertVisible:
     point: 23%,9%
 - assertVisible:  Entrar
-- assertVisible: "CPF ou CNPJ:"
+- assertVisible: 'CPF ou CNPJ:'
 - assertVisible: Avançar
 - assertVisible: Ainda não sou cliente Vero
 - assertVisible: Precisa de ajuda?

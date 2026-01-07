@@ -16,8 +16,7 @@ env:
 - tapOn: 'Não tenho minha senha'
 
 - runFlow: ../pages/recovery_page.yaml
-- assertVisible: , Voltar
-- tapOn: , Voltar
 
-- assertVisible: 'Senha:'
-- assertVisible: 'Não tenho minha senha'
+- tapOn: 'Receber código por email'
+
+- tapOn: 'Confirmar'

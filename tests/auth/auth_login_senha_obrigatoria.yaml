@@ -7,12 +7,12 @@ env:
 - launchApp:
     clearState: true
 - runFlow: ../pages/login_page.yaml
-- tapOn: "Insira o número do seu documento"
+- tapOn: 'Insira o número do seu documento'
 - inputText: ${CPF_TESTE}
-- tapOn: "Avançar"
-- assertVisible: "Senha:"
-- tapOn: "Entrar"
-- assertVisible: "Campo obrigatório"
-- assertVisible: "Preencha o campo de senha."
-- tapOn: "OK"
-- assertVisible: "Entrar"
+- tapOn: 'Avançar'
+- assertVisible: 'Senha:'
+- tapOn: 'Entrar'
+- assertVisible: 'Campo obrigatório'
+- assertVisible: 'Preencha o campo de senha.'
+- tapOn: 'OK'
+- assertVisible: 'Entrar'

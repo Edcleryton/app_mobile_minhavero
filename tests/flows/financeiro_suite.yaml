@@ -1,0 +1,12 @@
+appId: com.vero_mobile
+env:
+  CPF_TESTE: ${CPF_TESTE}
+  SENHA_TESTE: ${SENHA_TESTE}
+---
+- runFlow: ../financeiro/financeiro_validar_tela.yaml
+- runFlow: ../financeiro/financeiro_selecionar_planos.yaml
+- runFlow: ../financeiro/financeiro_pagar_fatura_.yaml
+- runFlow: ../financeiro/financeiro_pagar_pix.yaml
+- runFlow: ../financeiro/financeiro_pagar_cartao_de_credito.yaml
+- runFlow: ../financeiro/financeiro_pagar_codigo_de_barras.yaml
+- runFlow: ../financeiro/financeiro_pagar_segunda_via.yaml

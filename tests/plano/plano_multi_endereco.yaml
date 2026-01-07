@@ -9,7 +9,7 @@ env:
 
 - runFlow: ../flows/login_sucesso_flow.yaml
 
-- tapOn: "Plano"
+- tapOn: 'Plano'
 
 - runFlow:
       file: ../pages/plano_page.yaml
@@ -36,7 +36,7 @@ env:
 
 - runFlow: ../flows/login_sucesso_flow.yaml
 
-- tapOn: "Plano"
+- tapOn: 'Plano'
 
 - runFlow:
       file: ../pages/plano_page.yaml
@@ -44,11 +44,11 @@ env:
 - runFlow:
       file: ../pages/plano_page.yaml
 
-- assertVisible: "Como faço para ter acessos ao Premiere?"
-- assertVisible: "Como faço para ter acessos ao Telecine?"
-- assertVisible: "Como faço para ter acessos ao Globoplay Premium?"
+- assertVisible: 'Como faço para ter acessos ao Premiere?'
+- assertVisible: 'Como faço para ter acessos ao Telecine?'
+- assertVisible: 'Como faço para ter acessos ao Globoplay Premium?'
 
 - runFlow:
       file: ../pages/plano_page.yaml
 - assertVisible:
-      text: ".*"
+      text: '.*'

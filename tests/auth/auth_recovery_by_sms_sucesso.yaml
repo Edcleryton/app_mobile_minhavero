@@ -1,0 +1,47 @@
+appId: com.vero_mobile
+env:
+  CPF_TESTE: ${CPF_TESTE}
+---
+# TESTE: Recuperação de senha por SMS
+- launchApp:
+    clearState: true
+
+- runFlow: ../pages/login_page.yaml
+
+- tapOn: 'Insira o número do seu documento'
+- inputText: ${CPF_TESTE}
+
+- tapOn: 'Avançar'
+
+- assertVisible: 'Não tenho minha senha'
+- tapOn: 'Não tenho minha senha'
+
+- runFlow: ../pages/recovery_page.yaml
+- assertVisible: 719******29
+- assertVisible:
+    text: Receber código por sms
+    index: 1
+- tapOn: 719******29
+#- tapOn:
+#    point: 10%,42%
+- assertVisible: Confirmar, 
+- tapOn: Confirmar, 
+
+- assertVisible:  Recuperar senha
+- assertVisible: 'Código de recuperação::'
+- assertVisible: 'Nova Senha::'
+- assertVisible: 'Alterar Senha'
+- assertVisible: 'Insira o número do seu documento'
+
+- tapOn: 'Código de recuperação::'
+- inputText: '123456'
+
+- tapOn: 'Nova Senha::'
+- inputText: 'NovaSenha123'
+
+- tapOn: 'Alterar Senha'
+- assertVisible: Campo obrigatório
+- assertVisible: Por favor, preencha o campo de código.
+- assertVisible: OK
+- tapOn: OK
+#- assertVisible: 'Senha alterada com sucesso'

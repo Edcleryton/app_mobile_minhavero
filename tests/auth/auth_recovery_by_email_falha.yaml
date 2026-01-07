@@ -7,16 +7,16 @@ env:
 
 - runFlow: ../pages/login_page.yaml
 
-- tapOn: "Insira o número do seu documento"
+- tapOn: 'Insira o número do seu documento'
 - inputText: ${CPF_TESTE}
 
-- tapOn: "Avançar"
+- tapOn: 'Avançar'
 
-- assertVisible: "Não tenho minha senha"
-- tapOn: "Não tenho minha senha"
+- assertVisible: 'Não tenho minha senha'
+- tapOn: 'Não tenho minha senha'
 
 - runFlow: ../pages/recovery_page.yaml
 
-- tapOn: "Receber código por email"
+- tapOn: 'Receber código por email'
 
-- tapOn: "Confirmar"
+- tapOn: 'Confirmar'

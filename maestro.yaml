@@ -2,7 +2,7 @@
 
 screenshotOnFailure: true
 videoOnFailure: true
-outputDir: "./test-results"
+outputDir: './test-results'
 debugLogging: true
 
 # Configurações de timeout

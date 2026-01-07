@@ -9,16 +9,17 @@ env:
     clearState: true
 
 - runFlow: ../pages/login_page.yaml
-- tapOn: "Insira o número do seu documento"
+- tapOn: 'Insira o número do seu documento'
 - inputText: ${CPF_TESTE}
-- tapOn: "Avançar"
-- assertVisible: "Senha:"
-- tapOn: "Insira sua senha"
+- tapOn: 'Avançar'
+- assertVisible: 'Senha:'
+- tapOn: 'Insira sua senha'
 - inputText: ${SENHA_TESTE}
-- tapOn: "Entrar"
-- assertVisible: "Home"
-- assertVisible: "Acesso rápido"
-- assertVisible: "Destaques"
+- tapOn: Entrar
+- assertVisible: 'Home'
+- assertVisible: 'Acesso rápido'
+- assertVisible: 'Destaques'
 - assertVisible: Biometria
 - assertVisible: Use sua biometria para um Login Mais Rápido e Seguro na próxima vez.
+- assertVisible: Agora Não
 - tapOn: Agora Não

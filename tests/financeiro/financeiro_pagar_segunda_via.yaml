@@ -1,0 +1,22 @@
+appId: com.vero_mobile
+env:
+  CPF_TESTE: ${CPF_TESTE}
+  SENHA_TESTE: ${SENHA_TESTE}
+---
+- launchApp:
+    clearState: true
+- runFlow: ../flows/login_sucesso_flow.yaml
+- assertVisible: Agora Não
+- tapOn: Agora Não
+#- assertVisible: Instabilidade no sistema, algumas funcionalidades podem apresentar erros
+#- assertVisible: OK
+#- tapOn: OK
+- assertVisible: Financeiro
+- tapOn: Financeiro
+- assertVisible: Pagar fatura
+- tapOn: Pagar fatura
+- runFlow: ../pages/pagamentos_page.yaml
+- tapOn: Segunda via de Fatura
+- assertVisible: Voltar
+- tapOn: Voltar
+- assertVisible: Pagar fatura

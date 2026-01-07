@@ -6,22 +6,14 @@ env:
 ---
 - launchApp:
     clearState: true
-- tapOn: "Insira o número do seu documento"
+- tapOn: 'Insira o número do seu documento'
 - inputText: ${CPF_TESTE}
-- tapOn: "Avançar"
-- assertVisible: "Senha:"
-- tapOn: "Insira sua senha"
+- tapOn: 'Avançar'
+- assertVisible: 'Senha:'
+- tapOn: 'Insira sua senha'
 - inputText: ${SENHA_TESTE}
-- tapOn: "Entrar"
-- assertVisible: "Olá,.*"
----
-- runFlow:
-    when:
-      visible: Biometria
-    commands:
-      - extendedWaitUntil:
-          visible: Agora Não
-          timeout: 1000
-      - tapOn: Agora Não
----
+- tapOn: 'Entrar'
+- assertVisible: Biometria
 
+
+---

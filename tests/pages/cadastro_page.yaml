@@ -3,49 +3,49 @@
 appId: com.vero_mobile
 ---
 
-- label: "verificar_pagina_cadastro"
+- label: 'verificar_pagina_cadastro'
   command:
-  - assertVisible: "Informações de cadastro"
-  - assertVisible: "Deixe seus dados para que possamos entrar em contato com você"
-  - assertVisible: "Nome:"
-  - assertVisible: "Telefone:"
-  - assertVisible: "Enviar"
+  - assertVisible: 'Informações de cadastro'
+  - assertVisible: 'Deixe seus dados para que possamos entrar em contato com você'
+  - assertVisible: 'Nome:'
+  - assertVisible: 'Telefone:'
+  - assertVisible: 'Enviar'
 
-- label: "preencher_nome"
+- label: 'preencher_nome'
   command:
-  - tapOn: "Digite seu nome"
+  - tapOn: 'Digite seu nome'
   - inputText: ${NOME}
 
-- label: "preencher_telefone"
+- label: 'preencher_telefone'
   command:
-  - tapOn: "Telefone:"
+  - tapOn: 'Telefone:'
   - inputText: ${TELEFONE}
 
-- label: "clicar_enviar"
+- label: 'clicar_enviar'
   command:
-  - tapOn: "Enviar"
+  - tapOn: 'Enviar'
 
-- label: "validar_sucesso"
+- label: 'validar_sucesso'
   command:
-  - assertVisible: "Sucesso"
-  - assertVisible: "Dados enviados com sucesso!"
-  - assertVisible: "Em breve entraremos em contato com você."
+  - assertVisible: 'Sucesso'
+  - assertVisible: 'Dados enviados com sucesso!'
+  - assertVisible: 'Em breve entraremos em contato com você.'
 
-- label: "validar_erro_nome"
+- label: 'validar_erro_nome'
   command:
-  - assertVisible: "Atenção"
-  - assertVisible: "Antes de continuar, por favor, preencha o nome."
+  - assertVisible: 'Atenção'
+  - assertVisible: 'Antes de continuar, por favor, preencha o nome.'
 
-- label: "validar_erro_telefone_obrigatorio"
+- label: 'validar_erro_telefone_obrigatorio'
   command:
-  - assertVisible: "Atenção"
-  - assertVisible: "Antes de continuar, por favor, preencha o telefone."
+  - assertVisible: 'Atenção'
+  - assertVisible: 'Antes de continuar, por favor, preencha o telefone.'
 
-- label: "validar_erro_telefone_invalido"
+- label: 'validar_erro_telefone_invalido'
   command:
-  - assertVisible: "Atenção"
-  - assertVisible: "Telefone inválido!"
+  - assertVisible: 'Atenção'
+  - assertVisible: 'Telefone inválido!'
 
-- label: "clicar_voltar"
+- label: 'clicar_voltar'
   command:
-  - tapOn: "Voltar"
+  - tapOn: 'Voltar'

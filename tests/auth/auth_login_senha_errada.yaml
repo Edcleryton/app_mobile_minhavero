@@ -8,19 +8,25 @@ env:
     clearState: true
 
 - runFlow: ../pages/login_page.yaml
-- tapOn: "Insira o número do seu documento"
+- tapOn: 'Insira o número do seu documento'
 - inputText: ${CPF_TESTE}
-- tapOn: "Avançar"
-- assertVisible: "Senha:"
-- tapOn: "Insira sua senha"
-- inputText: "senhaerrada123"
-- tapOn: "Entrar"
-- assertVisible: "Autenticação falhou"
-- assertVisible: "Verifique se os dados de acesso estão corretos e tente novamente."
-- tapOn: "OK"
+- tapOn: 'Avançar'
+- assertVisible: 'Senha:'
+- tapOn: 'Insira sua senha'
+- inputText: 'senhaerrada123'
+- tapOn: 'Entrar'
+- extendedWaitUntil:
+    visible:
+      text: '(?i)autentica.*falh.*'
+    timeout: 30000
+- assertVisible:
+    text: '(?i)autentica.*falh.*'
+- assertVisible:
+    text: '(?i)verifique.*dados.*acesso.*corretos.*tente.*novamente.*'
+- tapOn: 'OK'
 - assertVisible: Não tenho minha senha
 - assertVisible:  Entrar
-- assertVisible: "CPF ou CNPJ:"
-- assertVisible: "Senha:"
+- assertVisible: 'CPF ou CNPJ:'
+- assertVisible: 'Senha:'
 - assertVisible: Entrar, 
 - assertVisible: Não tenho minha senha

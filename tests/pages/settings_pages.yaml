@@ -3,39 +3,39 @@
 appId: com.vero_mobile
 ---
 
-- label: "verificar_menu_aberto"
+- label: 'verificar_menu_aberto'
   command:
-  - assertVisible: "Selecionar plano"
-  - assertVisible: "Termos e condições Plano"
-  - assertVisible: "Informações de cadastro"
-  - assertVisible: "Alterar Senha"
-  - assertVisible: "Cancelar acesso ao App"
-  - assertVisible: "Sair"
+  - assertVisible: 'Selecionar plano'
+  - assertVisible: 'Termos e condições Plano'
+  - assertVisible: 'Informações de cadastro'
+  - assertVisible: 'Alterar Senha'
+  - assertVisible: 'Cancelar acesso ao App'
+  - assertVisible: 'Sair'
 
-- label: "validar_mensagem_logout"
+- label: 'validar_mensagem_logout'
   command:
-  - assertVisible: "Realize logout da sua conta Vero neste dispositivo"
+  - assertVisible: 'Realize logout da sua conta Vero neste dispositivo'
 
-- label: "clicar_selecionar_plano"
+- label: 'clicar_selecionar_plano'
   command:
-  - tapOn: "Selecionar plano"
+  - tapOn: 'Selecionar plano'
 
-- label: "clicar_termos_condicoes"
+- label: 'clicar_termos_condicoes'
   command:
-  - tapOn: "Termos e condições Plano"
+  - tapOn: 'Termos e condições Plano'
 
-- label: "clicar_info_cadastro"
+- label: 'clicar_info_cadastro'
   command:
-  - tapOn: "Informações de cadastro"
+  - tapOn: 'Informações de cadastro'
 
-- label: "clicar_alterar_senha"
+- label: 'clicar_alterar_senha'
   command:
-  - tapOn: "Alterar Senha"
+  - tapOn: 'Alterar Senha'
 
-- label: "clicar_cancelar_acesso"
+- label: 'clicar_cancelar_acesso'
   command:
-  - tapOn: "Cancelar acesso ao App"
+  - tapOn: 'Cancelar acesso ao App'
 
-- label: "clicar_sair"
+- label: 'clicar_sair'
   command:
-  - tapOn: "Sair"
+  - tapOn: 'Sair'

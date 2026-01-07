@@ -1,0 +1,22 @@
+appId: com.vero_mobile
+---
+- assertVisible: Voltar
+- assertVisible: Pagar fatura
+- assertVisible:
+    text: '\d{4,5}\s*[-–]\s*.*'
+- assertVisible:
+    text: 'R\$ .*'
+- assertVisible:
+    text: 'Vencimento: .*'
+- assertVisible: Fatura Vencida
+- assertVisible: Escolha uma forma de pagamento
+- assertVisible: Pix
+- assertVisible: Segunda via de Fatura
+- assertVisible: Pagar com cartão
+- assertVisible: Copiar Código de Barras
+- scrollUntilVisible:
+    element: Dúvidas?
+    direction: DOWN
+- assertVisible: Dúvidas?
+- assertVisible: Recebi minha primeira fatura Vero e o valor veio diferente do que eu contratei. Por que?
+- assertVisible: Quais são as formas de receber minha fatura Vero?

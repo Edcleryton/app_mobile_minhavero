@@ -7,7 +7,7 @@ env:
     clearState: true
 
 - runFlow: ../flows/login_sucesso_flow.yaml
-- tapOn: "Plano"
+- tapOn: 'Plano'
 - runFlow:
     file: ../pages/plano_page.yaml
 

@@ -1,0 +1,42 @@
+appId: com.vero_mobile
+---
+- assertVisible: 'Você está visualizando o plano:'
+- assertVisible: Endereço de instalação
+- assertVisible: Selecione outro plano
+- assertVisible:
+    text: '\d{4,5}\s*[-–]\s*.*'
+- assertVisible:
+    text: 'R\$ .*'
+- assertVisible:
+    text: 'Vencimento: .*'
+- assertVisible: Pagar fatura
+- scrollUntilVisible:
+    element: Todas as faturas
+    direction: DOWN
+- assertVisible: Todas as faturas
+- assertVisible: Consultar
+- assertVisible: Reabilitar internet
+- assertVisible: Solicitar
+- assertVisible: Data de vencimento
+- assertVisible: Alterar
+- assertVisible: Negociar fatura
+- assertVisible: Negociar
+- scrollUntilVisible:
+    element: Débito automático
+    direction: DOWN
+- assertVisible: Débito automático
+- assertVisible: Solicitar
+- assertVisible: Notas Fiscais
+- assertVisible: Consultar
+- assertVisible: Quitações Anuais
+- assertVisible: Consultar
+- scrollUntilVisible:
+    element: Dúvidas?
+    direction: DOWN
+- assertVisible: Dúvidas?
+- scrollUntilVisible:
+    element: Após quanto tempo do pagamento da minha fatura em atraso será liberada a minha internet? Quanto tempo o banco demora para reconhecer o pagamento da minha fatura?
+    direction: DOWN
+- assertVisible: Após quanto tempo do pagamento da minha fatura em atraso será liberada a minha internet? Quanto tempo o banco demora para reconhecer o pagamento da minha fatura?
+- assertVisible: Atrasei o pagamento da minha conta. Pagarei juros?
+- assertVisible: Como faço para receber minha fatura por WhatsApp?
