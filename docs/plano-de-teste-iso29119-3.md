@@ -1,0 +1,104 @@
+# Plano de Teste — Minha Vero (ISO/IEC/IEEE 29119-3)
+
+**Projeto:** Minha Vero (APK Android)  
+**Identificador do Documento:** MV-TP-ISO29119-3-001  
+**Data:** 2026-01-07  
+**Responsável:** QA / Automação (Maestro)
+
+| Versão | Data       | Autor           | Mudança                           |
+|-------:|------------|-----------------|-----------------------------------|
+| 1.0.0  | 2026-01-07 | Edcleryton Silva| Criação inicial do plano de teste |
+
+## 1. Visão Geral
+
+**Objetivo do teste**  
+Validar os fluxos críticos de uso do aplicativo Minha Vero no Android, com foco em navegação, conteúdo essencial de telas e ações principais, reduzindo risco de regressões em produção.
+
+**Itens a serem testados**  
+- APK Android do aplicativo Minha Vero (`app_versao/*.apk`)
+- Flows Maestro (`tests/**/*.yaml`)
+
+## 2. Escopo
+
+**In Scope**
+- Autenticação
+  - Login (sucesso, senha obrigatória, CPF obrigatório, usuário inválido, senha errada)
+  - Recuperação de senha (SMS e e-mail; cenários de sucesso e falha, quando aplicável)
+- Home
+  - Validação de elementos essenciais da tela inicial
+- Plano
+  - Seleção e validação de plano
+  - Cenário de múltiplos endereços
+- Financeiro
+  - Validação da tela Financeiro (cards, botões e FAQ)
+  - Acesso a “Pagar fatura” e validação da tela de Pagamentos
+  - Ações de pagamento (Pix, cartão, segunda via, copiar código de barras)
+
+**Out of Scope**
+- Validações de regras de negócio no backend (cálculo de faturas, juros, conciliação)
+- Testes de carga/performance, consumo de bateria e memória
+- Compatibilidade ampla de dispositivos (fora do(s) device(s) definido(s) para teste)
+- Segurança (pentest), criptografia e análise de vulnerabilidades
+- Integrações externas (gateways de pagamento, bancos) além da navegação/UI
+
+## 3. Estratégia de Teste
+
+**Automação com Maestro**
+- Ferramenta principal: Maestro (CLI e Studio) para execução de testes UI.
+- Evidências em falha:
+  - `screenshotOnFailure: true` e `videoOnFailure: true` (configurado em `maestro.yaml`).
+  - Diretório configurado do projeto: `./test-results` (ver `maestro.yaml`).
+
+**Abordagem de Page Objects e Nested Flows**
+- Page Objects: validações e checks de cada tela ficam em `tests/pages/*.yaml` (ex.: `financeiro_page.yaml`, `pagamentos_page.yaml`, `login_page.yaml`).
+- Nested Flows: cenários reutilizáveis e passos comuns são chamados via `runFlow` (ex.: `tests/flows/login_sucesso_flow.yaml`).
+- Princípios adotados:
+  - Evitar duplicação: o teste “de cenário” contém navegação e ação principal; validações de tela ficam no Page correspondente.
+  - Independência: cada flow deve poder ser executado isoladamente (preferencialmente com `launchApp: clearState: true` quando necessário).
+  - Robustez: preferir `scrollUntilVisible` e espera explícita (`extendedWaitUntil`) em elementos dinâmicos.
+
+**Execução de Suites**
+- Execução por pasta (suite) com ordem definida e continuidade após falha:
+  - `tests/auth/config.yaml` define `executionOrder` com `continueOnFailure: true`.
+- Execução por arquivo “suite” (encadeamento via `runFlow`):
+  - `tests/flows/suite_auth_flow.yaml`
+  - `tests/flows/suite_financeiro_flow.yaml`
+
+Exemplos (CLI):
+```bash
+maestro test tests/auth
+maestro test tests/flows/suite_auth_flow.yaml
+maestro test tests/flows/suite_financeiro_flow.yaml
+```
+
+## 4. Critérios de Transição
+
+**Critérios de Entrada**
+- APK disponível e instalável (build estável e assinado conforme ambiente de teste).
+- Ambiente de execução pronto:
+  - Android Emulator/Device disponível e acessível via ADB.
+  - Dependências instaladas (Maestro, SDK Android).
+- Dados de teste configurados (variáveis em `.env` e/ou variáveis de ambiente no processo).
+
+**Critérios de Saída**
+- 100% dos casos críticos (Prioridade Alta) aprovados.
+- Evidências de falhas (screenshot/vídeo/log) coletadas para cada caso reprovado.
+- Nenhum bloqueador aberto sem plano de correção acordado.
+
+## 5. Riscos e Contingências
+
+| ID  | Risco | Probabilidade | Impacto | Plano de Mitigação |
+|-----|-------|---------------|---------|--------------------|
+| R-01 | Elementos sem `testID`/IDs acessíveis dificultam seleção estável | Alta | Alto | Preferir seletores por texto/regex, solicitar `testID` no app, usar `scrollUntilVisible` e pontos apenas quando inevitável |
+| R-02 | Textos variam (copy, capitalização, pontuação) causando falsos negativos | Média | Médio | Usar `assertVisible` com `text:` regex e `extendedWaitUntil` para mensagens dinâmicas |
+| R-03 | Dependência de estado (sessão, onboarding, biometria) quebra execução em sequência | Alta | Alto | Garantir `clearState` nos fluxos críticos, criar passos defensivos para modais recorrentes (ex.: “Agora Não”) |
+| R-04 | Instabilidade do ambiente (emulador lento, ADB intermitente) | Média | Alto | Padronizar device, ajustar timeouts, reiniciar emulador/ADB, executar em máquina dedicada quando possível |
+| R-05 | Mudanças de layout exigem atualização constante dos Page Objects | Média | Médio | Centralizar validações em `tests/pages/*`, revisar pages por release e manter testes de cenário mínimos |
+| R-06 | Artefatos de evidência não aparecem na pasta esperada | Média | Médio | Padronizar `outputDir` do projeto e centralizar execução via script para consolidar artefatos |
+
+## 6. Modelo de Caso de Teste
+
+| ID | Título | Prioridade | Passos | Resultados Esperados |
+|----|--------|------------|--------|----------------------|
+| TC-AUTH-001 | Login com credenciais válidas | Alta | 1) Abrir app 2) Informar CPF 3) Informar senha 4) Entrar | Usuário autenticado e Home exibida com elementos principais |
+
