@@ -3,12 +3,14 @@ env:
   CPF_TESTE: ${CPF_TESTE}
   SENHA_TESTE: ${SENHA_TESTE}
 ---
+# SUITE: Autenticação Completa (Positivos, Negativos, Ajuda e Recuperação)
 #- launchApp:
 #    clearState: true
 - runFlow: ../auth/auth_login_senha_errada.yaml
 - runFlow: ../auth/auth_login_senha_obrigatoria.yaml
 - runFlow: ../auth/auth_login_cpf_obrigatorio.yaml
 - runFlow: ../auth/auth_login_usuario_invalido.yaml
+- runFlow: ../auth/auth_precisa_de_ajuda.yaml
 - runFlow: ../auth/auth_recovery_by_email_falha.yaml
 #- runFlow: ../auth/auth_recovery_by_email_sucesso.yaml
 - runFlow: ../auth/auth_recovery_by_sms_falha.yaml

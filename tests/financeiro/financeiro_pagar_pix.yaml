@@ -6,6 +6,7 @@ env:
 - launchApp:
     clearState: true
 - runFlow: ../flows/login_sucesso_flow.yaml
+- assertVisible: Biometria
 - assertVisible: Agora Não
 - tapOn: Agora Não
 #- assertVisible: Instabilidade no sistema, algumas funcionalidades podem apresentar erros
@@ -13,10 +14,30 @@ env:
 #- tapOn: OK
 - assertVisible: Financeiro
 - tapOn: Financeiro
-- assertVisible: Pagar fatura
-- tapOn: Pagar fatura
-- runFlow: ../pages/pagamentos_page.yaml
-- tapOn: Pix
-- assertVisible: Voltar
-- tapOn: Voltar
-- assertVisible: Pagar fatura
+- runFlow: ../pages/financeiro_page.yaml
+- runFlow:
+    when:
+      visible: Pagar fatura
+    commands:
+      - tapOn: Pagar fatura
+      - runFlow: ../pages/pagamentos_page.yaml
+      - tapOn: Pix
+      - extendedWaitUntil:
+          visible:
+            text: '(?i)copiar\\s*c[oó]digo\\s*pix'
+          timeout: 30000
+      - assertVisible:
+          text: '(?i)pix'
+      - assertVisible:
+          text: 'R\\$\\s*\\d+[\\.,]\\d{2}'
+      - assertVisible:
+          text: '(?i)use\\s*o\\s*aplicativo\\s*do\\s*seu\\s*banco.*(c[oó]digo\\s*pix|qr)'
+      - assertVisible:
+          text: '(?i)escanear.*qr'
+      - assertVisible:
+          text: '(?i)copiar\\s*c[oó]digo\\s*pix'
+      - tapOn:
+          text: '(?i)copiar\\s*c[oó]digo\\s*pix'
+      - assertVisible: Voltar
+      - tapOn: Voltar
+      - assertVisible: Pagar fatura

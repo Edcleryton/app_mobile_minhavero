@@ -1,19 +1,16 @@
 # tests/flows/login_sucesso_flow.yaml
 appId: com.vero_mobile
 env:
-  CPF_TESTE: ${CPF_TESTE}
-  SENHA_TESTE: ${SENHA_TESTE}
+  # Defina aqui qual usuário do .env será usado como padrão, caso não seja informado pelo fluxo pai
+  CPF_TESTE: ${CPF_ADAPTER2}
+  SENHA_TESTE: ${SENHA_ADAPTER2}
 ---
 - launchApp:
     clearState: true
-- tapOn: 'Insira o número do seu documento'
-- inputText: ${CPF_TESTE}
-- tapOn: 'Avançar'
+- tapOn: Insira o número do seu documento
+- inputText: ${CPF_ADAPTER2}
+- tapOn: Avançar, 
 - assertVisible: 'Senha:'
 - tapOn: 'Insira sua senha'
-- inputText: ${SENHA_TESTE}
+- inputText: ${SENHA_ADAPTER2}
 - tapOn: 'Entrar'
-- assertVisible: Biometria
-
-
----

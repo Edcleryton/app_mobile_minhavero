@@ -1,8 +1,4 @@
 appId: com.vero_mobile
-env:
-  CPF_TESTE: ${CPF_TESTE}
-  SENHA_TESTE: ${SENHA_TESTE}
-
 ---
 # TESTE: Login com sucesso
 - launchApp:
@@ -10,11 +6,11 @@ env:
 
 - runFlow: ../pages/login_page.yaml
 - tapOn: 'Insira o número do seu documento'
-- inputText: ${CPF_TESTE}
+- inputText: ${CPF_ADAPTER2}
 - tapOn: 'Avançar'
 - assertVisible: 'Senha:'
 - tapOn: 'Insira sua senha'
-- inputText: ${SENHA_TESTE}
+- inputText: ${SENHA_ADAPTER2}
 - tapOn: Entrar
 - assertVisible: 'Home'
 - assertVisible: 'Acesso rápido'

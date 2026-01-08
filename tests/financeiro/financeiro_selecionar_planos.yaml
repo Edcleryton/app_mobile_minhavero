@@ -6,6 +6,7 @@ env:
 - launchApp:
     clearState: true
 - runFlow: ../flows/login_sucesso_flow.yaml
+- assertVisible: Biometria
 - assertVisible: Agora Não
 - tapOn: Agora Não
 #- assertVisible: Instabilidade no sistema, algumas funcionalidades podem apresentar erros

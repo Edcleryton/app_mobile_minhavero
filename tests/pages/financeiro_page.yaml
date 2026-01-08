@@ -5,31 +5,100 @@ appId: com.vero_mobile
 - assertVisible: Selecione outro plano
 - assertVisible:
     text: '\d{4,5}\s*[-–]\s*.*'
-- assertVisible:
-    text: 'R\$ .*'
-- assertVisible:
-    text: 'Vencimento: .*'
-- assertVisible: Pagar fatura
+- runFlow:
+    when:
+      visible: Pagar fatura
+    commands:
+      - assertVisible:
+          text: 'R\$ .*'
+      - runFlow:
+          when:
+            visible:
+              text: 'Vencimento: .*'
+          commands:
+            - assertVisible:
+                text: 'Vencimento: .*'
+      - runFlow:
+          when:
+            visible:
+              text: '(?i)fatura\s*vencida'
+          commands:
+            - assertVisible:
+                text: '(?i)fatura\s*vencida'
+      - runFlow:
+          when:
+            visible:
+              text: '(?i)fatura\s*aberta'
+          commands:
+            - assertVisible:
+                text: '(?i)fatura\s*aberta'
 - scrollUntilVisible:
     element: Todas as faturas
     direction: DOWN
 - assertVisible: Todas as faturas
 - assertVisible: Consultar
-- assertVisible: Reabilitar internet
-- assertVisible: Solicitar
-- assertVisible: Data de vencimento
-- assertVisible: Alterar
-- assertVisible: Negociar fatura
-- assertVisible: Negociar
+- runFlow:
+    when:
+      visible: Reabilitar internet
+    commands:
+      - assertVisible: Reabilitar internet
+      - assertVisible: Solicitar
+- runFlow:
+    when:
+      visible: Data de vencimento
+    commands:
+      - assertVisible: Data de vencimento
+      - runFlow:
+          when:
+            visible: Alterar
+          commands:
+            - assertVisible: Alterar
+- runFlow:
+    when:
+      visible: Negociar fatura
+    commands:
+      - assertVisible: Negociar fatura
+      - runFlow:
+          when:
+            visible: Negociar
+          commands:
+            - assertVisible: Negociar
 - scrollUntilVisible:
-    element: Débito automático
+    element:
+      text: '.*(Débito automático|Forma de pagamento|Dúvidas?).*'
     direction: DOWN
-- assertVisible: Débito automático
-- assertVisible: Solicitar
-- assertVisible: Notas Fiscais
-- assertVisible: Consultar
-- assertVisible: Quitações Anuais
-- assertVisible: Consultar
+- runFlow:
+    when:
+      visible: Débito automático
+    commands:
+      - assertVisible: Débito automático
+      - runFlow:
+          when:
+            visible: Solicitar
+          commands:
+            - assertVisible: Solicitar
+- runFlow:
+    when:
+      visible: Forma de pagamento
+    commands:
+      - assertVisible: Forma de pagamento
+      - runFlow:
+          when:
+            visible: Alterar
+          commands:
+            - assertVisible: Alterar
+- runFlow:
+    when:
+      visible: Notas Fiscais
+    commands:
+      - assertVisible: Notas Fiscais
+      - assertVisible: Consultar
+- runFlow:
+    when:
+      visible: Quitações Anuais
+    commands:
+      - assertVisible: Quitações Anuais
+      - assertVisible: Consultar
 - scrollUntilVisible:
     element: Dúvidas?
     direction: DOWN

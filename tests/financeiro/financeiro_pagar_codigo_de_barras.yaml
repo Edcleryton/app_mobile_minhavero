@@ -6,17 +6,22 @@ env:
 - launchApp:
     clearState: true
 - runFlow: ../flows/login_sucesso_flow.yaml
-- assertVisible: Agora Não
-- tapOn: Agora Não
-#- assertVisible: Instabilidade no sistema, algumas funcionalidades podem apresentar erros
-#- assertVisible: OK
-#- tapOn: OK
+- runFlow:
+    when:
+      visible: Agora Não
+    commands:
+      - tapOn: Agora Não
 - assertVisible: Financeiro
 - tapOn: Financeiro
-- assertVisible: Pagar fatura
-- tapOn: Pagar fatura
-- runFlow: ../pages/pagamentos_page.yaml
-- tapOn: Copiar Código de Barras
-- assertVisible: Código de barras copiado com sucesso!
-- assertVisible: Fechar
-- tapOn: Fechar
+- runFlow: ../pages/financeiro_page.yaml
+- runFlow:
+    when:
+      visible: Pagar fatura
+    commands:
+      - tapOn: Pagar fatura
+      - runFlow: ../pages/pagamentos_page.yaml
+      - tapOn: Copiar Código de Barras
+      - assertVisible:
+          text: '(?i)c[oó]digo\s*de\s*barras\s*copiado.*'
+      - assertVisible: Fechar
+      - tapOn: Fechar

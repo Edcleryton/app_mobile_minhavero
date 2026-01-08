@@ -1,6 +1,4 @@
 appId: com.vero_mobile
-env:
-    CPF_TESTE: ${CPF_TESTE}
 ---
 - launchApp:
       clearState: true

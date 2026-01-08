@@ -1,0 +1,45 @@
+appId: com.vero_mobile
+---
+- launchApp:
+    clearState: true
+# Chama o login. Se precisar trocar o usuário, altere direto no login_sucesso_flow.yaml ou no .env
+- runFlow: ../flows/login_sucesso_flow.yaml
+- runFlow:
+    when:
+      visible: Agora Não
+    commands:
+      - tapOn: Agora Não
+- assertVisible: Financeiro
+- tapOn: Financeiro
+# Aguarda o carregamento da tela Financeiro antes de buscar o botão
+- assertVisible: 'Você está visualizando o plano:.*'
+- scrollUntilVisible:
+    element: Pagar fatura
+    direction: DOWN
+- tapOn: Pagar fatura
+- assertVisible: Pagar com cartão
+- tapOn: Pagar com cartão
+- runFlow: ../pages/pagamento_cartao_page.yaml
+- scrollUntilVisible:
+    element: Data de validade Frente do cartão no formato MM/AA
+    direction: DOWN
+- tapOn: Número do cartão
+- inputText: ${CARTAO_ELO_NUMERO}
+- tapOn: Data de validade.*
+- inputText: ${CARTAO_VALIDADE}
+- tapOn: Código de segurança.*
+- inputText: ${CARTAO_CVV}
+- scrollUntilVisible:
+    element:
+      text: '(?i)Pagar.*R\$.*'
+    direction: DOWN
+    timeout: 20000
+- swipe:
+    start: 50%, 70%
+    end: 50%, 30%
+    duration: 800
+- tapOn:
+    text: '(?i)Pagar.*R\$.*'
+- runFlow: ../pages/pagamento_sucesso_page.yaml
+- tapOn: Voltar
+- assertVisible: Pagar fatura

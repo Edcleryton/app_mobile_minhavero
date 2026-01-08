@@ -1,0 +1,14 @@
+appId: com.vero_mobile
+---
+- extendedWaitUntil:
+    visible:
+      text: 'Pagamento bem-sucedido!'
+    timeout: 30000
+- assertVisible: Pagamento bem-sucedido!
+- assertVisible: Resumo do pedido
+- assertVisible: Fatura
+- assertVisible: Pagamento de Fatura
+- assertVisible: Referência
+- assertVisible: Total do pagamento
+- assertVisible:
+    text: 'R\$\s*\d+[.,]\d{2}'

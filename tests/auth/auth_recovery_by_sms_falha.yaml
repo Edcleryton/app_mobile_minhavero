@@ -1,13 +1,10 @@
 appId: com.vero_mobile
-env:
-  CPF_TESTE: ${CPF_TESTE}
 ---
 # TESTE: Recuperação de senha por SMS
 - launchApp:
     clearState: true
 
 - runFlow: ../pages/login_page.yaml
-
 - tapOn: 'Insira o número do seu documento'
 - inputText: ${CPF_TESTE}
 

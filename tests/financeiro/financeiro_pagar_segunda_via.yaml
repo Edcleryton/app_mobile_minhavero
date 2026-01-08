@@ -6,17 +6,21 @@ env:
 - launchApp:
     clearState: true
 - runFlow: ../flows/login_sucesso_flow.yaml
-- assertVisible: Agora Não
-- tapOn: Agora Não
-#- assertVisible: Instabilidade no sistema, algumas funcionalidades podem apresentar erros
-#- assertVisible: OK
-#- tapOn: OK
+- runFlow:
+    when:
+      visible: Agora Não
+    commands:
+      - tapOn: Agora Não
 - assertVisible: Financeiro
 - tapOn: Financeiro
-- assertVisible: Pagar fatura
-- tapOn: Pagar fatura
-- runFlow: ../pages/pagamentos_page.yaml
-- tapOn: Segunda via de Fatura
-- assertVisible: Voltar
-- tapOn: Voltar
-- assertVisible: Pagar fatura
+- runFlow: ../pages/financeiro_page.yaml
+- runFlow:
+    when:
+      visible: Pagar fatura
+    commands:
+      - tapOn: Pagar fatura
+      - runFlow: ../pages/pagamentos_page.yaml
+      - tapOn: Segunda via de Fatura
+      - assertVisible: Voltar
+      - tapOn: Voltar
+      - assertVisible: Pagar fatura

@@ -1,0 +1,24 @@
+appId: com.vero_mobile
+---
+- extendedWaitUntil:
+    visible: Resumo do pedido
+    timeout: 30000
+- assertVisible: Resumo do pedido
+- assertVisible: Fatura
+- assertVisible: Descrição
+- assertVisible: Pagamento de Fatura
+- assertVisible: Referência
+- assertVisible:
+    text: '\d+'
+- assertVisible: Total do pagamento
+- assertVisible:
+    text: '.*R\$.*'
+- assertVisible: Escolha um método de pagamento
+- assertVisible: Cartão bancário
+- assertVisible: Todos os campos são obrigatórios, a menos que marcados em contrário.
+- scrollUntilVisible:
+    element: Número do cartão
+    direction: DOWN
+- assertVisible: Número do cartão
+- assertVisible: Data de validade.*
+- assertVisible: Código de segurança 3 dígitos na parte de trás do cartão
