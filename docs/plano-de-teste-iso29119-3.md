@@ -24,10 +24,10 @@ Validar os fluxos críticos de uso do aplicativo Minha Vero no Android, com foco
 
 **In Scope**
 - Login
-- Recuperação de senha (SMS/e-mail)
+- Recuperação de senha (SMS/e-mail) e fluxos de Ajuda ("Precisa de ajuda?")
 - Home (validação de tela)
 - Plano (validação e múltiplos endereços)
-- Financeiro (validação de tela e fluxos de pagamento)
+- Financeiro (validação de tela, pagamentos com cartão, scroll em formulários longos)
 
 **Out of Scope**
 - Validações de regras de negócio no backend (cálculo de faturas, juros, conciliação)
@@ -40,6 +40,13 @@ Validar os fluxos críticos de uso do aplicativo Minha Vero no Android, com foco
 
 **Automação com Maestro**
 - Ferramenta principal: Maestro (CLI e Studio) para execução de testes UI.
+- Estratégia de Dados:
+  - Uso de variáveis de ambiente (`.env`) para credenciais sensíveis (CPF, Senha, Cartão).
+  - Remoção de hardcoding nos arquivos de teste para maior portabilidade e segurança.
+- Técnicas de Interação:
+  - `scrollUntilVisible`: Essencial para telas longas (formulários de cartão, termos de uso).
+  - Regex (`(?i)texto.*`, `.*R\$.*`): Uso extensivo para lidar com valores dinâmicos, quebras de linha em botões e variações de texto.
+  - `swipe`: Utilizado para ajustes finos de visibilidade quando o scroll padrão não é suficiente (ex: rodapé de pagamento).
 - Evidências em falha:
   - `screenshotOnFailure: true` e `videoOnFailure: true` (configurado em `maestro.yaml`).
   - Diretório configurado do projeto: `./test-results` (ver `maestro.yaml`).
@@ -50,7 +57,7 @@ Validar os fluxos críticos de uso do aplicativo Minha Vero no Android, com foco
 - Princípios adotados:
   - Evitar duplicação: o teste “de cenário” contém navegação e ação principal; validações de tela ficam no Page correspondente.
   - Independência: cada flow deve poder ser executado isoladamente (preferencialmente com `launchApp: clearState: true` quando necessário).
-  - Robustez: preferir `scrollUntilVisible` e espera explícita (`extendedWaitUntil`) em elementos dinâmicos.
+  - Robustez: preferir `scrollUntilVisible` para elementos ocultos (especialmente em formulários) e regex flexível (ex.: `.*R\$.*`) para valores monetários e botões com quebra de linha.
 
 **Execução de Suites**
 - Execução por pasta (suite) com ordem definida e continuidade após falha:
@@ -89,7 +96,8 @@ maestro test tests/flows/suite_financeiro_flow.yaml
 | R-03 | Dependência de estado (sessão, onboarding, biometria) quebra execução em sequência | Alta | Alto | Garantir `clearState` nos fluxos críticos, criar passos defensivos para modais recorrentes (ex.: “Agora Não”) |
 | R-04 | Instabilidade do ambiente (emulador lento, ADB intermitente) | Média | Alto | Padronizar device, ajustar timeouts, reiniciar emulador/ADB, executar em máquina dedicada quando possível |
 | R-05 | Mudanças de layout exigem atualização constante dos Page Objects | Média | Médio | Centralizar validações em `tests/pages/*`, revisar pages por release e manter testes de cenário mínimos |
-| R-06 | Artefatos de evidência não aparecem na pasta esperada | Média | Médio | Padronizar `outputDir` do projeto e centralizar execução via script para consolidar artefatos |
+| R-07 | Teclado virtual cobrindo elementos de ação (botões de rodapé) | Alta | Alto | Uso sistemático de `hideKeyboard` antes de interações finais e `swipe` manual para garantir visibilidade |
+| R-08 | Quebra de linha em botões com valores monetários (ex: "Pagar \n R$ 100") | Alta | Alto | Adoção de regex que ignora quebras de linha (`.*R\$.*`) em vez de match exato de texto |
 
 ## 7. Modelo de Caso de Teste
 

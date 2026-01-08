@@ -21,17 +21,15 @@ tests\
 
 ## Rodar suites principais
 
+Certifique-se de que o arquivo `.env` na raiz do projeto esteja configurado com suas credenciais (`CPF_TESTE`, `SENHA_TESTE`, dados do cartão, etc.).
+
 No PowerShell, na raiz do projeto:
 
 ```powershell
-$env:CPF_TESTE="seu_cpf"
-$env:SENHA_TESTE="sua_senha"
 maestro test .\tests\flows\suite_auth_flow.yaml
 ```
 
 ```powershell
-$env:CPF_TESTE="seu_cpf"
-$env:SENHA_TESTE="sua_senha"
 maestro test .\tests\flows\suite_financeiro_flow.yaml
 ```
 

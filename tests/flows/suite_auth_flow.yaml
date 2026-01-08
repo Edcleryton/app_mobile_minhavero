@@ -14,6 +14,8 @@ env:
 - runFlow: ../auth/auth_recovery_by_email_falha.yaml
 #- runFlow: ../auth/auth_recovery_by_email_sucesso.yaml
 - runFlow: ../auth/auth_recovery_by_sms_falha.yaml
+- runFlow: ../auth/auth_recovery_codigo_obrigatorio.yaml
+- runFlow: ../auth/auth_recovery_senha_obrigatoria.yaml
 #- runFlow: ../auth/auth_recovery_by_sms_sucesso.yaml
 - runFlow: ../auth/auth.recovery_voltar_tela_de_login.yaml
 - runFlow: ../auth/auth_login_sucesso.yaml
