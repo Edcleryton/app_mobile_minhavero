@@ -1,9 +1,0 @@
-appId: com.vero_mobile
----
-
-# Verificar que estou na página de recuperação
-- assertVisible: 'Por onde deseja receber o código?'
-- assertVisible: 'Receber código por sms'
-- assertVisible: 'Receber código por email'
-- assertVisible: 'Confirmar'
-- assertVisible: 'Voltar'

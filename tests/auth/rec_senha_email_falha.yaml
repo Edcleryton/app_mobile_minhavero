@@ -9,7 +9,7 @@ appId: com.vero_mobile
 - tapOn: 'Avançar'
 - assertVisible: 'Não tenho minha senha'
 - tapOn: 'Não tenho minha senha'
-- runFlow: ../pages/recovery_page.yaml
+- runFlow: ../pages/login_receber_codigo_page.yaml
 - tapOn: 'Receber código por email'
 - tapOn: 'Confirmar'
 - assertVisible: 'Código de recuperação::'
@@ -21,13 +21,31 @@ appId: com.vero_mobile
     id: input-text-field
     index: 2
 - assertVisible: Alterar Senha, 
+# Tentativa enviar campo senha vazio
+- tapOn:
+    id: input-text-field
+    index: 1
+- inputText: 123456
+- tapOn: Alterar Senha
+- assertVisible: Campo obrigatório
+- assertVisible: Por favor, preencha a nova senha.
+- assertVisible: OK
+- tapOn: OK
+
+- tapOn:
+    id: input-text-field
+    index: 1
+- eraseText
+- tapOn:
+    id: input-text-field
+    index: 2
+- inputText: 123456
 - tapOn: Alterar Senha
 - assertVisible: Campo obrigatório
 - assertVisible: Por favor, preencha o campo de código.
-- assertVisible: OK
 - tapOn: OK
 - assertVisible: Reenviar Código
 - tapOn: Reenviar Código
-- runFlow: ../pages/recovery_page.yaml
+- runFlow: ..\pages\login_recuperar_senha_page.yaml
 - tapOn: 'Receber código por email'
 - tapOn: 'Confirmar'

@@ -1,0 +1,18 @@
+# tests/financeiro/financeiro_validar_tela.yaml
+
+appId: com.vero_mobile
+
+
+---
+- assertVisible: Tudo ok!
+- assertVisible: Sua solicitação foi feita com sucesso!
+- assertVisible: OK
+- tapOn: OK
+- assertVisible: Débito automático
+- assertVisible: Solicitação de débito automático realizada com sucesso!
+- assertVisible: Sua solicitação está sendo processada.
+- assertVisible: Em alguns bancos, é necessário que você aprove a solicitação de débito automático. Confirme essa necessidade com seu banco.
+- assertVisible: Ok
+- tapOn: Ok
+- assertVisible: "Você está visualizando o plano:"
+

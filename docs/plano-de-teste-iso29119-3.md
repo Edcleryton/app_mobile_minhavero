@@ -27,7 +27,7 @@ Validar os fluxos críticos de uso do aplicativo Minha Vero no Android, com foco
 - Recuperação de senha (SMS/e-mail) e fluxos de Ajuda ("Precisa de ajuda?")
 - Home (validação de tela)
 - Plano (validação e múltiplos endereços)
-- Financeiro (validação de tela, pagamentos com cartão, scroll em formulários longos)
+- Financeiro (validação de tela, pagamentos com cartão, débito automático, alteração de vencimento, fatura digital, negociação, notas fiscais, quitações)
 
 **Out of Scope**
 - Validações de regras de negócio no backend (cálculo de faturas, juros, conciliação)

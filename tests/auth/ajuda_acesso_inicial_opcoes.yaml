@@ -1,0 +1,20 @@
+appId: com.vero_mobile
+---
+# TESTE: Opção precisa de ajuda
+- launchApp:
+    clearState: true
+- runFlow: ../pages/login_page.yaml
+- tapOn: Precisa de ajuda?
+- assertVisible: Precisa de ajuda?
+- assertVisible: Como faço meu primeiro acesso?
+- tapOn: Como faço meu primeiro acesso?
+- runFlow: ../pages/ajuda_primeiro_acesso_page.yaml
+- tapOn:
+    id: close
+- assertVisible: Como faço para redefinir minha senha?
+- tapOn: Como faço para redefinir minha senha?
+- runFlow: ../pages/ajuda_redefinir_senha_page.yaml
+- tapOn:
+    id: close
+- assertVisible: Precisa de ajuda?
+- assertVisible: Como faço meu primeiro acesso?

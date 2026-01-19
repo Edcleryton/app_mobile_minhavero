@@ -1,0 +1,24 @@
+appId: com.vero_mobile
+---
+- runFlow: ../flows/login_sucesso_flow.yaml
+- runFlow:
+    when:
+      visible: Agora Não
+    commands:
+      - tapOn: Agora Não
+- tapOn: Financeiro
+- extendedWaitUntil:
+    visible:
+      text: 'Você está visualizando o plano:.*'
+    timeout: 30000
+- scrollUntilVisible:
+    element: Todas as faturas
+    direction: DOWN
+    timeout: 30000
+- tapOn: Todas as faturas
+- extendedWaitUntil:
+    visible: Voltar
+    timeout: 30000
+- assertVisible: Todas as faturas
+- tapOn: Voltar
+- assertVisible: Todas as faturas

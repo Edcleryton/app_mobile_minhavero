@@ -3,10 +3,10 @@ env:
   CPF_TESTE: ${CPF_TESTE}
   SENHA_TESTE: ${SENHA_TESTE}
 ---
-- runFlow: ../financeiro/financeiro_validar_tela.yaml
-- runFlow: ../financeiro/financeiro_selecionar_planos.yaml
-- runFlow: ../financeiro/financeiro_pagar_fatura.yaml
-- runFlow: ../financeiro/financeiro_pagar_pix.yaml
-- runFlow: ../financeiro/financeiro_pagar_cartao_de_credito_sucesso.yaml
-- runFlow: ../financeiro/financeiro_pagar_codigo_de_barras.yaml
-- runFlow: ../financeiro/financeiro_pagar_segunda_via.yaml
+- runFlow: ../financeiro/financeiro_elementos_tela.yaml
+- runFlow: ../financeiro/financeiro_selecao_plano.yaml
+- runFlow: ../financeiro/pagamento_selecao_fatura.yaml
+- runFlow: ../financeiro/pagamento_pix_qrcode.yaml
+- runFlow: ../financeiro/pagamento_cartao_sucesso.yaml
+- runFlow: ../financeiro/pagamento_boleto_copia.yaml
+- runFlow: ../financeiro/segunda_via_fatura.yaml

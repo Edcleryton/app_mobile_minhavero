@@ -1,0 +1,12 @@
+appId: com.vero_mobile
+---
+- assertVisible: "Passo 1:"
+- assertVisible: Clique no botão 'Primeiro acesso'
+- assertVisible: "Passo 2:"
+- assertVisible: Digite seu CPF ou CNPJ e clique em “Avançar”
+- assertVisible: "Passo 3:"
+- assertVisible: Escolha por onde deseja receber o código para redefinição de senha e clique em “Enviar Código”
+- assertVisible: "Passo 4:"
+- assertVisible: Em seguida, insira o código de verificação recebido, crie uma nova senha e clique em “Alterar Senha”
+- assertVisible: "Passo 5:"
+- assertVisible: Agora é só inserir novamente seu CPF e sua nova senha para entrar!

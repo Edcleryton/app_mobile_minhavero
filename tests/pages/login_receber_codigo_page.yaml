@@ -1,0 +1,10 @@
+appId: com.vero_mobile
+---
+# Verificar que estou na página de recuperação
+- assertVisible: 'Por onde deseja receber o código?'
+- assertVisible: Escolha uma opção e pressione o botão Confirmar
+- assertVisible: 'Receber código por email'
+- assertVisible: edcl*********lva@visie.com.br
+- assertVisible: 'Receber código por sms'
+- assertVisible: 719******29
+- assertVisible: Confirmar, 

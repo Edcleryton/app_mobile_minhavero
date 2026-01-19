@@ -4,12 +4,12 @@ env:
 ---
 - launchApp:
       clearState: true
-- runFlow: ../pages/login_page.yaml
+- runFlow: ..\pages\login_page.yaml
 - tapOn: 'Insira o número do seu documento'
 - inputText: ${CPF_ADAPTER}
 - tapOn: 'Avançar'
 - assertVisible: 'Não tenho minha senha'
 - tapOn: 'Não tenho minha senha'
-- runFlow: ../pages/recovery_page.yaml
+- runFlow: ../pages/login_receber_codigo_page.yaml
 - tapOn: 'Receber código por email'
 - tapOn: 'Confirmar'

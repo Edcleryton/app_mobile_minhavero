@@ -11,20 +11,20 @@ appId: com.vero_mobile
       - tapOn: Agora Não
 - assertVisible: Financeiro
 - tapOn: Financeiro
-# Aguarda o carregamento da tela Financeiro antes de buscar o botão
 - assertVisible: 'Você está visualizando o plano:.*'
-- scrollUntilVisible:
-    element: Pagar fatura
-    direction: DOWN
+- assertVisible: Pagar fatura
 - tapOn: Pagar fatura
 - assertVisible: Pagar com cartão
 - tapOn: Pagar com cartão
+- extendedWaitUntil:
+    visible:
+    timeout: 310000
 - runFlow: ../pages/pagamento_cartao_page.yaml
 - scrollUntilVisible:
     element: Data de validade Frente do cartão no formato MM/AA
     direction: DOWN
 - tapOn: Número do cartão
-- inputText: ${CARTAO_ELO_NUMERO}
+- inputText: ${CARTAO_ELO}
 - tapOn: Data de validade.*
 - inputText: ${CARTAO_VALIDADE}
 - tapOn: Código de segurança.*
@@ -34,10 +34,8 @@ appId: com.vero_mobile
       text: '(?i)Pagar.*R\$.*'
     direction: DOWN
     timeout: 20000
-- swipe:
-    start: 50%, 70%
-    end: 50%, 30%
-    duration: 800
+- doubleTapOn:
+    point: 16%,86%
 - tapOn:
     text: '(?i)Pagar.*R\$.*'
 - runFlow: ../pages/pagamento_sucesso_page.yaml

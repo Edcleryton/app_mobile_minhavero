@@ -1,0 +1,25 @@
+# tests/financeiro/financeiro_validar_tela.yaml
+
+appId: com.vero_mobile
+---
+- assertVisible: Débito automático
+- assertVisible: Bradesco
+- assertVisible: "237"
+- assertVisible: "Agência:"
+- assertVisible: Digite a agência
+- assertVisible: "Digito:"
+- assertVisible: Dígito verificador
+- assertVisible: "Número da conta:"
+- assertVisible: Número da conta
+- assertVisible:
+    text: "Digito:"
+    index: 1
+- assertVisible:
+    text: Dígito verificador
+    index: 1
+- assertVisible: Sou o titular da conta
+- assertVisible: Solicitar ativação débito automático
+- assertNotVisible:
+    id: button-container
+    text: Solicitar ativação débito automático
+

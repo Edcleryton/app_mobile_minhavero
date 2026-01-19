@@ -1,0 +1,39 @@
+appId: com.vero_mobile
+---
+- runFlow: ../flows/login_sucesso_flow.yaml
+- assertVisible: Biometria
+- assertVisible: Agora Não
+- tapOn: Agora Não
+- tapOn: Financeiro
+- extendedWaitUntil:
+    visible:
+      text: "Você está visualizando o plano:.*"
+    timeout: 30000
+
+- scrollUntilVisible:
+    element: Data de vencimento
+    direction: DOWN
+    timeout: 30000
+- tapOn:
+    id: button-container
+    index: 5
+- tapOn: Data de vencimento
+- assertVisible: Alterar
+- tapOn: Alterar
+- assertVisible: "Data de vencimento: *"
+- assertVisible: "1"
+- assertVisible: "3"
+- assertVisible: "5"
+- assertVisible: Fique atento
+- tapOn: "1"
+- assertVisible: Alterar vencimento
+- assertVisible: Quer alterar realmente o dia de vencimento da fatura para 13?
+- assertVisible: Agora não
+- assertVisible: Quero alterar
+- tapOn: Quero alterar
+- assertVisible: Sucesso!
+- assertVisible: Vencimento alterado com sucesso
+- assertVisible: OK
+- tapOn: OK
+- assertVisible: Voltar
+- doubleTapOn: Voltar

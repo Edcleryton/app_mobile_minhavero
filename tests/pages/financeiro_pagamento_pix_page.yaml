@@ -1,0 +1,18 @@
+# tests/financeiro/financeiro_validar_tela.yaml
+
+appId: com.vero_mobile
+
+---
+- assertVisible: Merchant logo
+- assertVisible: Resumo do pedido
+- assertVisible: Pagar para
+- assertVisible: Fatura
+- assertVisible: Descrição
+- assertVisible: Pagamento de Fatura
+- assertVisible: Referência
+- assertVisible: Total do pagamento
+- assertVisible: Escolha um método de pagamento
+- assertVisible:
+    text: "R\\$ \\d{1,3}(\\.\\d{1,2})?"
+- assertNotVisible: Escanear código QR
+- assertVisible: Copiar código PIX

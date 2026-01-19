@@ -1,0 +1,52 @@
+# tests/config.yaml
+
+flows:
+  - auth/*
+  - financeiro/*
+  - home/*
+  - plano/*
+
+env:
+  CPF_TESTE: ${CPF_TESTE}
+  SENHA_TESTE: ${SENHA_TESTE}
+
+executionOrder:
+  continueOnFailure: true
+  flowsOrder:
+    # ===== AUTENTICAÇÃO =====
+    - login_cpf_em_branco
+    - login_senha_invalida
+    - login_senha_em_branco
+    - login_usuario_invalido
+    - ajuda_acesso_inicial_opcoes
+    - rec_senha_email_falha
+    - rec_senha_email_sucesso
+    - rec_senha_sms_falha
+    - rec_senha_sms_sucesso
+    - rec_senha_codigo_branco
+    - rec_senha_nova_branco
+    - login_com_sucesso
+    
+    # ===== HOME =====
+    - home_elementos_tela
+    
+    # ===== PLANO =====
+    - plano_multi_enderecos
+    - plano_detalhes_tela
+    
+    # ===== FINANCEIRO =====
+    - vencimento_alteracao_sucesso
+    - debito_automatico_sucesso
+    - fatura_digital_detalhes
+    - negociacao_fatura_opcoes
+    - notas_fiscais_lista
+    - pagamento_cartao_falha
+    - pagamento_cartao_sucesso
+    - pagamento_boleto_copia
+    - pagamento_selecao_fatura
+    - pagamento_pix_qrcode
+    - segunda_via_fatura
+    - quitacao_anual_historico
+    - financeiro_selecao_plano
+    - financeiro_elementos_tela
+    - historico_faturas_lista

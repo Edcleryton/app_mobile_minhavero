@@ -3,32 +3,21 @@ appId: com.vero_mobile
 # TESTE: Validação de campo obrigatório - Nova Senha
 - launchApp:
     clearState: true
-
 - runFlow: ../pages/login_page.yaml
 - tapOn: 'Insira o número do seu documento'
 - inputText: ${CPF_ADAPTER}
 - tapOn: 'Avançar'
 - assertVisible: 'Não tenho minha senha'
 - tapOn: 'Não tenho minha senha'
-
-- runFlow: ../pages/recovery_page.yaml
-- tapOn:
-    text: 'Receber código por sms'
-    index: 1
+- runFlow: ..\pages\login_receber_codigo_page.yaml
+- tapOn: 719******29
 - tapOn: Confirmar, 
-
-- assertVisible: 'Código de recuperação::'
+- runFlow: ..\pages\login_recuperar_senha_page.yaml
 - tapOn:
     id: input-text-field
     index: 1
-- assertVisible: 'Nova Senha::'
-- tapOn:
-    id: input-text-field
-    index: 2
-- tapOn: 'Código de recuperação::'
-- inputText: '123456'
-- tapOn: 'Alterar Senha'
-
+- inputText: '12345678'
+- tapOn: Alterar Senha, 
 - assertVisible: 'Campo obrigatório'
-- assertVisible: Por favor, preencha o campo de código.
+- assertVisible: Por favor, preencha a nova senha.
 - tapOn: 'OK'

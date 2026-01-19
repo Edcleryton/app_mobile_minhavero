@@ -1,0 +1,15 @@
+appId: com.vero_mobile
+---
+# TESTE: Login com sucesso
+- launchApp:
+    clearState: true
+
+- runFlow: ../pages/login_page.yaml
+- tapOn: Insira o número do seu documento
+- inputText: ${CPF_ADAPTER_2}
+- tapOn: 'Avançar'
+- tapOn: 'Insira sua senha'
+- inputText: ${SENHA_ADAPTER_2}
+- assertVisible: Entrar, 
+- tapOn: Entrar
+- runFlow: ..\pages\home_page.yaml

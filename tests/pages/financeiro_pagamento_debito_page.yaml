@@ -1,0 +1,21 @@
+# tests/financeiro/financeiro_validar_tela.yaml
+
+appId: com.vero_mobile
+
+---
+- assertVisible: Atenção
+- assertVisible: "Para realizar o cadastro em débito automático, você precisa seguir as seguintes orientações:"
+- assertVisible:  Conferir se a conta cadastrada é do mesmo titular do cliente Vero. Ou seja, precisam constar o mesmo CPF/CNPJ.
+- tapOn:  Após feita a solicitação do cadastro, você precisará autorizar o débito automático na conta do seu banco, seja via aplicativo ou agência. Lembre-se que essa autorização deve acontecer em até 10 dias para o próximo vencimento, caso contrário, o débito automático não acontecerá e o pagamento da sua fatura não será efetuado.
+- assertVisible:  A conta cadastrada precisa ser CORRENTE. Conta poupança não será validada nesse procedimento.
+- assertVisible: Continuar
+- tapOn: Continuar
+- assertVisible: Débito automático
+- assertVisible: "Selecione abaixo o seu banco:"
+- assertVisible: Bradesco
+- assertVisible: "237"
+- assertVisible: Itaú
+- assertVisible: "341"
+- assertVisible: Santander
+- assertVisible: "033"
+- assertVisible: Voltar

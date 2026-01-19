@@ -1,0 +1,37 @@
+appId: com.vero_mobile
+---
+- runFlow: ../flows/login_sucesso_flow.yaml
+- assertVisible: Biometria
+- assertVisible: Agora Não
+- tapOn: Agora Não
+- tapOn: Financeiro
+- extendedWaitUntil:
+    visible:
+      text: "Você está visualizando o plano:.*"
+    timeout: 5000
+- scrollUntilVisible:
+    element: Débito automático
+    direction: DOWN
+    timeout: 5000
+- assertVisible: Débito automático
+- tapOn: Solicitar
+- runFlow: ../pages/financeiro_pagamento_debito_page.yaml
+- tapOn: Bradesco, 237
+- runFlow: ..\pages\financeiro_pagamento_debito_ficha_page.yaml
+- tapOn: Digite a agência
+- inputText: ${AGENCIA_BRADESCO}
+- tapOn:
+    id: input-text-field
+    index: 0
+    text: Dígito verificador
+- inputText: ${DIGITO_AGENCIA_BRADESCO}
+- tapOn: Número da conta
+- inputText: ${CONTA_BRADESCO}
+- tapOn:
+    id: input-text-field
+    index: 1
+    text: Dígito verificador
+- inputText: ${DIGITO_CONTA_BRADESCO}
+- doubleTapOn: Sou o titular da conta
+- tapOn: Solicitar ativação débito automático
+- runFlow: ..\pages\financeiro_pagamento_debito_ficha_sucesso_page.yaml

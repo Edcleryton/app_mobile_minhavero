@@ -1,0 +1,13 @@
+appId: com.vero_mobile
+---
+- assertVisible:  Recuperar senha
+- assertVisible: "Código de recuperação::"
+- assertVisible:
+    id: input-text-field
+    index: 1
+- assertVisible: "Nova Senha::"
+- assertVisible:
+    id: input-text-field
+    index: 2
+- assertVisible: Alterar Senha
+- assertVisible: Reenviar Código

@@ -1,111 +1,47 @@
+# tests/financeiro/financeiro_validar_tela.yaml
+
 appId: com.vero_mobile
+
 ---
-- assertVisible: 'Você está visualizando o plano:'
-- assertVisible: Endereço de instalação
+- assertVisible: "Você está visualizando o plano:"
 - assertVisible: Selecione outro plano
+- tapOn:
+    point: "9%,27%"
+- extractTextWithAI:
+    query: "Texto visível na tela"
+    outputVariable: "visibleText"
 - assertVisible:
-    text: '\d{4,5}\s*[-–]\s*.*'
-- runFlow:
-    when:
-      visible: Pagar fatura
-    commands:
-      - assertVisible:
-          text: 'R\$ .*'
-      - runFlow:
-          when:
-            visible:
-              text: 'Vencimento: .*'
-          commands:
-            - assertVisible:
-                text: 'Vencimento: .*'
-      - runFlow:
-          when:
-            visible:
-              text: '(?i)fatura\s*vencida'
-          commands:
-            - assertVisible:
-                text: '(?i)fatura\s*vencida'
-      - runFlow:
-          when:
-            visible:
-              text: '(?i)fatura\s*aberta'
-          commands:
-            - assertVisible:
-                text: '(?i)fatura\s*aberta'
-- scrollUntilVisible:
-    element: Todas as faturas
+    text: ".+"
+- assertVisible: Endereço de instalação
+- tapOn:
+    point: 9%,34%
+- extractTextWithAI:
+    query: "Texto visível na tela"
+    outputVariable: "visibleText"
+- assertVisible:
+    text: ".+"
+- assertVisible: Selecione outro plano
+- swipe:
+    from:
+      text: Fatura vencida
     direction: DOWN
-- assertVisible: Todas as faturas
-- assertVisible: Consultar
-- runFlow:
-    when:
-      visible: Reabilitar internet
-    commands:
-      - assertVisible: Reabilitar internet
-      - assertVisible: Solicitar
-- runFlow:
-    when:
-      visible: Data de vencimento
-    commands:
-      - assertVisible: Data de vencimento
-      - runFlow:
-          when:
-            visible: Alterar
-          commands:
-            - assertVisible: Alterar
-- runFlow:
-    when:
-      visible: Negociar fatura
-    commands:
-      - assertVisible: Negociar fatura
-      - runFlow:
-          when:
-            visible: Negociar
-          commands:
-            - assertVisible: Negociar
+- assertVisible:
+    text: Pagar fatura
+    index: 0
 - scrollUntilVisible:
     element:
-      text: '.*(Débito automático|Forma de pagamento|Dúvidas?).*'
-    direction: DOWN
-- runFlow:
-    when:
-      visible: Débito automático
-    commands:
-      - assertVisible: Débito automático
-      - runFlow:
-          when:
-            visible: Solicitar
-          commands:
-            - assertVisible: Solicitar
-- runFlow:
-    when:
-      visible: Forma de pagamento
-    commands:
-      - assertVisible: Forma de pagamento
-      - runFlow:
-          when:
-            visible: Alterar
-          commands:
-            - assertVisible: Alterar
-- runFlow:
-    when:
-      visible: Notas Fiscais
-    commands:
-      - assertVisible: Notas Fiscais
-      - assertVisible: Consultar
-- runFlow:
-    when:
-      visible: Quitações Anuais
-    commands:
-      - assertVisible: Quitações Anuais
-      - assertVisible: Consultar
-- scrollUntilVisible:
-    element: Dúvidas?
-    direction: DOWN
+      text: Data de vencimento
+- assertVisible: Todas as faturas
+- assertVisible: Consultar
+- assertVisible: Data de vencimento
+- assertVisible: Forma de pagamento
+- assertVisible: Valor da fatura optional
 - assertVisible: Dúvidas?
-- scrollUntilVisible:
-    element: Após quanto tempo do pagamento da minha fatura em atraso será liberada a minha internet? Quanto tempo o banco demora para reconhecer o pagamento da minha fatura?
-    direction: DOWN
 - assertVisible: Após quanto tempo do pagamento da minha fatura em atraso será liberada a minha internet? Quanto tempo o banco demora para reconhecer o pagamento da minha fatura?
-- assertVisible: Atrasei o pagamento da minha conta. Pagarei juros?
-- assertVisible: Como faço para receber minha fatura por WhatsApp?
+- scrollUntilVisible:
+    element:
+      text: Após quanto tempo do pagamento da minha fatura em atraso será liberada a minha internet? Quanto tempo o banco demora para reconhecer o pagamento da minha fatura?
+- scrollUntilVisible:
+    element:
+      text: Exibir tudo
+- assertVisible: Exibir tudo

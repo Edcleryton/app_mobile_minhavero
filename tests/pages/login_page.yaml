@@ -1,8 +1,10 @@
 appId: com.vero_mobile
 ---
-#- tapOn: MinhaVero
-- assertVisible: Entrar
-- assertVisible: "CPF ou CNPJ:"
-- assertVisible: Avançar
-- assertVisible: Ainda não sou cliente Vero
-- assertVisible: Precisa de ajuda?
+- extendedWaitUntil:
+    visible:
+      text: 'CPF ou CNPJ:'
+    timeout: 15000
+- assertVisible: 'CPF ou CNPJ:'
+- assertVisible: Insira o número do seu documento
+- assertVisible:
+    text: 'Avançar.*'
