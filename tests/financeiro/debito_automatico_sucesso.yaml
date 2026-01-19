@@ -15,9 +15,9 @@ appId: com.vero_mobile
     timeout: 5000
 - assertVisible: Débito automático
 - tapOn: Solicitar
-- runFlow: ../pages/financeiro_pagamento_debito_page.yaml
+- runFlow: ../pages/pagamento_debito_page.yaml
 - tapOn: Bradesco, 237
-- runFlow: ..\pages\financeiro_pagamento_debito_ficha_page.yaml
+- runFlow: ..\pages\pagamento_debito_ficha_page.yaml
 - tapOn: Digite a agência
 - inputText: ${AGENCIA_BRADESCO}
 - tapOn:
@@ -34,4 +34,4 @@ appId: com.vero_mobile
 - inputText: ${DIGITO_CONTA_BRADESCO}
 - doubleTapOn: Sou o titular da conta
 - tapOn: Solicitar ativação débito automático
-- runFlow: ..\pages\financeiro_pagamento_debito_ficha_sucesso_page.yaml
+- runFlow: ..\pages\pagamento_debito_sucesso_page.yaml

@@ -24,7 +24,7 @@ env:
       file: ../pages/plano_page.yaml
 
 - runFlow:
-      file: ../pages/plano_page.yam
+      file: ../pages/plano_page.yaml
 ---
 appId: com.vero_mobile
 env:
@@ -47,8 +47,3 @@ env:
 - assertVisible: 'Como faço para ter acessos ao Premiere?'
 - assertVisible: 'Como faço para ter acessos ao Telecine?'
 - assertVisible: 'Como faço para ter acessos ao Globoplay Premium?'
-
-- runFlow:
-      file: ../pages/plano_page.yaml
-- assertVisible:
-      text: '.*'

@@ -22,7 +22,7 @@ appId: com.vero_mobile
 
 - tapOn: Pagar fatura
 - tapOn: Pagar fatura
-- runFlow: ../pages/financeiro_pagamento_page.yaml
+- runFlow: ../pages/pagamento_opcoes_page.yaml
 - tapOn: Pix
-- runFlow: ..\pages\financeiro_pagamento_pix_page.yaml
+- runFlow: ..\pages\pagamento_pix_page.yaml
 - tapOn: Copiar código PIX

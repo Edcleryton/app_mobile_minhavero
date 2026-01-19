@@ -2,7 +2,7 @@
 # Script para executar testes Maestro com captura de evidências e notificação por email
 
 param(
-    [string]$TestFile = "tests/login.yaml",
+    [string]$TestFile = "tests/auth/login_com_sucesso.yaml",
     [string]$AppPath = "C:\Users\edcle\OneDrive\Desktop\minhaVeroApp\app versao\app-v2-hml-10489.apk",
     [string]$EmailTo = "seu-email@gmail.com",
     [string]$EmailFrom = "seu-email@gmail.com",

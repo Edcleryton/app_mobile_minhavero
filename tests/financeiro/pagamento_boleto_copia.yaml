@@ -19,7 +19,7 @@ env:
       visible: Pagar fatura
     commands:
       - tapOn: Pagar fatura
-      - runFlow: ../pages/pagamentos_page.yaml
+      - runFlow: ../pages/pagamento_fatura_page.yaml
       - tapOn: Copiar Código de Barras
       - assertVisible:
           text: '(?i)c[oó]digo\s*de\s*barras\s*copiado.*'

@@ -20,7 +20,7 @@ env:
       visible: Pagar fatura
     commands:
       - tapOn: Pagar fatura
-      - runFlow: ../pages/pagamentos_page.yaml
+      - runFlow: ../pages/pagamento_fatura_page.yaml
       - tapOn: Pagar com cartão
       - assertVisible: Voltar
       - tapOn: Voltar

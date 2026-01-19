@@ -52,7 +52,7 @@ Validar os fluxos críticos de uso do aplicativo Minha Vero no Android, com foco
   - Diretório configurado do projeto: `./test-results` (ver `maestro.yaml`).
 
 **Abordagem de Page Objects e Nested Flows**
-- Page Objects: validações e checks de cada tela ficam em `tests/pages/*.yaml` (ex.: `financeiro_page.yaml`, `pagamentos_page.yaml`, `login_page.yaml`).
+- Page Objects: validações e checks de cada tela ficam em `tests/pages/*.yaml` (ex.: `financeiro_page.yaml`, `pagamento_fatura_page.yaml`, `login_page.yaml`).
 - Nested Flows: cenários reutilizáveis e passos comuns são chamados via `runFlow` (ex.: `tests/flows/login_sucesso_flow.yaml`).
 - Princípios adotados:
   - Evitar duplicação: o teste “de cenário” contém navegação e ação principal; validações de tela ficam no Page correspondente.
